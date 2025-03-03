@@ -6,7 +6,7 @@ namespace Trabalho_Web_3.Domains.Repositories
     {
         Task<IEnumerable<Contato>> ListAsync();
         Task AddAsync(Contato contato);
-        Task<Contato> FindByIdAsync(int id);
+        Task<Contato> FindByIdAsync(string id);
         void Update(Contato contato);
 
         void Remove(Contato contato);

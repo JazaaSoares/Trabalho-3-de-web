@@ -19,7 +19,7 @@ namespace Trabalho_Web_3.Persistence.Repositories
             await _context.Contatos.AddAsync(contato);
         }
 
-        public async Task<Contato> FindByIdAsync(int id)
+        public async Task<Contato> FindByIdAsync(string id)
         {
             return await _context.Contatos.FindAsync(id);
         }

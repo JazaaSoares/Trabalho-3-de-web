@@ -3,6 +3,8 @@ using Trabalho_Web_3.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var startup = new Startup(builder.Configuration);
 startup.ConfigureService(builder.Services);
 

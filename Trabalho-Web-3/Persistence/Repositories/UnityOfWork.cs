@@ -1,5 +1,6 @@
 ﻿using Trabalho_Web_3.Persistence.Repositories;
 using Trabalho_Web_3.Persistence;
+using Trabalho_Web_3.Domains.Repositories;
 
 namespace Trabalho_Web_3.Persistence.Repositories
 {

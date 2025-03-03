@@ -35,3 +35,5 @@ C:\CURSOS\Trabalho-Web-3\obj\Debug\net7.0\refint\Trabalho-Web-3.dll
 C:\CURSOS\Trabalho-Web-3\obj\Debug\net7.0\Trabalho-Web-3.pdb
 C:\CURSOS\Trabalho-Web-3\obj\Debug\net7.0\Trabalho-Web-3.genruntimeconfig.cache
 C:\CURSOS\Trabalho-Web-3\obj\Debug\net7.0\ref\Trabalho-Web-3.dll
+C:\CURSOS\Trabalho-Web-3\bin\Debug\net7.0\AutoMapper.dll
+C:\CURSOS\Trabalho-Web-3\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

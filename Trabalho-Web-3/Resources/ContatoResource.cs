@@ -2,10 +2,10 @@
 {
     public class ContatoResource
     {
-        public int Id;
+        public string Id { get; set; }
 
-        public string Titulo;
+        public string Titulo { get; set; }
 
-        public string Descricao;
+        public string Descricao { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Trabalho_Web_3.Domains.Models;
 using Trabalho_Web_3.Domains.Repositories;
 using Trabalho_Web_3.Domains.Services;
+using Trabalho_Web_3.Services.Communication;
 
 namespace Trabalho_Web_3.Services
 {
@@ -9,16 +10,17 @@ namespace Trabalho_Web_3.Services
         private readonly IContatoRepository _contatoRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ContatoService(IContatoRepository contatoRepository)
+        public ContatoService(IContatoRepository contatoRepository, IUnitOfWork unitOfWork)
         {
-            this._contatoRepository = contatoRepository;
+            _contatoRepository = contatoRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IEnumerable<Contato>> ListAsync()
         {
             return await _contatoRepository.ListAsync();
         }
 
-        public async Task<Contato> SaveAsync(Contato contato)
+        public async Task<ContatoResponse> SaveAsync(Contato contato)
         {
             try
             {
@@ -29,19 +31,20 @@ namespace Trabalho_Web_3.Services
             }
             catch (Exception ex)
             {
-                return new ContatoResponse($"An error occurred when saving the contato: {ex.Message}");
+                return new ContatoResponse($"Erro ao salvar contato: {ex.Message}");
             }
         }
 
-        public async Task<ContatoResponse> UpdateAsync(int id, Contato contato)
+        public async Task<ContatoResponse> UpdateAsync(string id, Contato contato)
         {
 
             var existingContato = await _contatoRepository.FindByIdAsync(id);
 
             if (existingContato == null)
-                return new ContatoResponse("Contato not found.");
+                return new ContatoResponse("Contato não encontrado.");
 
-            existingContato.Name = contato.Name;
+            existingContato.Titulo = contato.Titulo;
+            existingContato.Descricao = contato.Descricao;
 
             try
             {
@@ -52,16 +55,16 @@ namespace Trabalho_Web_3.Services
             }
             catch (Exception ex)
             {
-                return new ContatoResponse($"An error occurred when updating the contato: {ex.Message}");
+                return new ContatoResponse($"Erro ao atualizar contato: {ex.Message}");
             }
         }
 
-        public async Task<ContatoResponse> DeleteAsync(int id)
+        public async Task<ContatoResponse> DeleteAsync(string id)
         {
             var existingContato = await _contatoRepository.FindByIdAsync(id);
 
             if (existingContato == null)
-                return new ContatoResponse("Contato not found.");
+                return new ContatoResponse("Contato não encontrado.");
 
             try
             {
@@ -72,7 +75,7 @@ namespace Trabalho_Web_3.Services
             }
             catch (Exception ex)
             {
-                return new ContatoResponse($"An error occurred when deleting the contato: {ex.Message}");
+                return new ContatoResponse($"Erro ao deletar contato: {ex.Message}");
             }
         }
     }

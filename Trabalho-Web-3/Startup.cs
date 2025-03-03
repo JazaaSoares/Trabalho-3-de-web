@@ -19,7 +19,7 @@ namespace Trabalho_Web_3
         public void ConfigureService(IServiceCollection services)
         {
             services.AddControllers();
-
+            
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
@@ -31,8 +31,16 @@ namespace Trabalho_Web_3
 
             services.AddScoped<IContatoRepository, ContatoRepository>();
             services.AddScoped<IContatoService, ContatoService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddAutoMapper();
+            services.AddScoped<IExperienciaRepository, ExperienciaRepository>();
+            services.AddScoped<IExperienciaService, ExperienciaService>();
+
+            services.AddScoped<IProjetoRepository, ProjetoRepository>();
+            services.AddScoped<IProjetoService, ProjetoService>();
+
+            services.AddScoped<IQualificacaoRepository, QualificacaoRepository>();
+            services.AddScoped<IQualificacaoService, QualificacaoService>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment enviroment)
